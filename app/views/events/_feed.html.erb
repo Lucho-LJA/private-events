@@ -18,22 +18,23 @@
     <% form_objects.each do |post_feed| %>
         <div class="box">
             <article class="media">
-            <!--
+                
                 <div class="media-left">
-                    <figure class="image is-64x64">
-                        
-                    </figure>
+                    <div class = "media-content content-center">
+                        <figure class="image is-64x64">
+                             <%= image_tag "default_person.jpg" %>
+                        </figure>
+                        <strong><%= post_feed.creator.name %></strong><br />
+                        <small>@<%= post_feed.creator.username %></small>
+                    </div>
                 </div>
-            -->
+            
                 <div class="media-content">
-                    <% if user_signed_in? %>
-                        <div class = "content">
-                            <strong><%= post_feed.creator.name %></strong>
-                            <small>@<%= post_feed.creator.username %></small><br/>
-                        </div>
-                    <% end %>
                     <div class="content">
-                        <strong><%= post_feed.title %></strong>
+                        <strong><%= post_feed.title %></strong><br />
+                        <p><%= post_feed.event_date%></p>
+                    </div>
+                    <div class="content">
                         <p><%= post_feed.description %></p>
                     </div>
                     <nav class="level">

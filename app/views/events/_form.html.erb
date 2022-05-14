@@ -7,13 +7,15 @@
           wrapper: false, 
           label_html: {class: "label"}, 
           placeholder: "Title of event...",
-          autofocus: true %>
+          autofocus: true,
+          required: true %>
     </div>
     <div class="control">
-      <%= f.input object_date, label: "Date: ", 
-          input_html: { class: "date"}, 
+      <%= f.input object_date, as: :datetime, label: "Date: ", 
+          input_html: { class: "date", value: Time.current}, 
           wrapper: false, 
-          label_html: {class: "label"}
+          label_html: {class: "label"},
+          required: true
           %>
     </div>
     <div class="control">
@@ -21,7 +23,8 @@
           input_html: { class: "textarea "}, 
           wrapper: false, 
           label_html: {class: "label"}, 
-          placeholder: "Description"
+          placeholder: "Description",
+          required: true
           %>
     </div>
   </div>
