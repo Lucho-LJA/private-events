@@ -33,7 +33,12 @@
                                     <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                                 <% end %>
                             <% end %>
-                        </div>  
+                        </div>
+                        <% if not current_user or current_user.id != id_user %>
+                            <div class="level-right is-mobile">
+                                <%= link_to 'Join', form_view, class:"button is-info" %>
+                            </div>
+                        <% end %>  
                     </nav>
                     
                 </div>

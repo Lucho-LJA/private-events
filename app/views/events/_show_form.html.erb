@@ -1,39 +1,44 @@
 <div class="box">
-  <article class="media">
-    <div class="media-left">
-      <div class = "media-content content-center">
-        <figure class="image is-64x64">
-          <%= image_tag "default_person.jpg" %>
-        </figure>
-        <strong><%= name_user %></strong><br />
-        <small>@<%= username_user %></small>
-      </div>
-    </div>
-    <div class="media-content">
-      <% if user_signed_in? %>
-        <% if current_user.id == id_user %>           
-          <nav class="level">
-            <div class="level-left is-mobile">
-              <%= link_to edit_path_form, class: "level-item" do %>
-                <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-              <% end %>
-              <%= link_to form_view, data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to delete post?"
-                      } do %>
-                <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-              <% end %>
-            </div>  
-          </nav>
-        <% end %>
-      <% end %>
-      <div class="content" style='text-align:center' >
-        <strong><%= title_form %></strong>
-        <p><%= date_form %></p>
-      </div>
-      <div class="content">
-        <p><%= description_form %></p>
-      </div>
-    </div>
-  </article>
+    <article class="media">
+        <div class="media-left">
+            <div class = "media-content content-center">
+                <figure class="image is-64x64">
+                    <%= image_tag "default_person.jpg" %>
+                </figure>
+                <strong><%= name_user %></strong><br />
+                <small>@<%= username_user %></small>
+            </div>
+        </div>
+        <div class="media-content">
+            <nav class="level">
+                <div class="level-left is-mobile">
+                    <% if user_signed_in? %>
+                        <% if current_user.id == id_user %>           
+                            <%= link_to edit_path_form, class: "level-item" do %>
+                                <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                            <% end %>
+                            <%= link_to form_view, data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to delete post?"
+                            } do %>
+                                <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+                <% if not current_user or current_user.id != id_user %>
+                    <div class="level-right is-mobile">
+                        <%= link_to 'Join', form_view, class:"button is-info" %>
+                    </div>
+                <% end %>   
+            </nav>
+            <div class="content" style='text-align:center' >
+                <strong><%= title_form %></strong>
+                <p><%= date_form %></p>
+            </div>
+            <div class="content">
+                <p><%= description_form %></p>
+            </div>
+        </div>
+    </article>
 </div>  
 <nav class="navbar is-fixed-bottom">
   <div class="navbar-menu">
