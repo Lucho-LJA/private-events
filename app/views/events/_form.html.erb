@@ -12,7 +12,7 @@
     </div>
     <div class="control">
       <%= f.input object_date, as: :datetime, label: "Date: ", 
-          input_html: { class: "date", value: Time.current}, 
+          input_html: { class: "date", value: Time.now.in_time_zone}, 
           wrapper: false, 
           label_html: {class: "label"},
           required: true
