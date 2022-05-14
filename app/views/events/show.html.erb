@@ -1,10 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @event %>
-
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", events_path %>
-
-  <%= button_to "Destroy this event", @event, method: :delete %>
-</div>
+<%= render 'show_form',name_user: @event.creator.name,
+ username_user: @event.creator.username, id_user: @event.creator_id, 
+ edit_path_form: edit_event_path(@event), title_form: @event.title,
+  description_form: @event.description, date_form: @event.event_date %>
