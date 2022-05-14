@@ -1,4 +1,5 @@
 <%= render 'show_form',name_user: @event.creator.name,
  username_user: @event.creator.username, id_user: @event.creator_id, 
  edit_path_form: edit_event_path(@event), title_form: @event.title,
-  description_form: @event.description, date_form: @event.event_date %>
+  description_form: @event.description, date_form: @event.event_date, 
+  form_view: @event %>

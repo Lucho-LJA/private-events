@@ -16,46 +16,10 @@
 
 
     <% form_objects.each do |post_feed| %>
-        <div class="box">
-            <article class="media">
-                
-                <div class="media-left">
-                    <div class = "media-content content-center">
-                        <figure class="image is-64x64">
-                             <%= image_tag "default_person.jpg" %>
-                        </figure>
-                        <strong><%= post_feed.creator.name %></strong><br />
-                        <small>@<%= post_feed.creator.username %></small>
-                    </div>
-                </div>
-            
-                <div class="media-content">
-                    <div class="content">
-                        <strong><%= post_feed.title %></strong><br />
-                        <p><%= post_feed.event_date%></p>
-                    </div>
-                    <div class="content">
-                        <p><%= post_feed.description %></p>
-                    </div>
-                    <nav class="level">
-                        <div class="level-left is-mobile">
-                            <%= link_to post_feed, class: "level-item" do %>
-                                <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                            <% end %>
-                            <% if user_signed_in? and current_user.id == post_feed.creator_id %>
-                                <%= link_to edit_event_path(post_feed), class: "level-item" do %>
-                                    <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                <% end %>
-                                <%= link_to post_feed, data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to delete post?"
-                                } do %>
-                                    <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                                <% end %>
-                            <% end %>
-                        </div>  
-                    </nav>
-                    
-                </div>
-            </article>
-        </div>     
+        <%= render 'show_form_main', name_user: post_feed.creator.name, 
+        username_user: post_feed.creator.username, title_form: post_feed.title, 
+        date_form: post_feed.event_date, description_form: post_feed.description, 
+        form_view: post_feed, edit_path_form: edit_event_path(post_feed), 
+        id_user: post_feed.creator_id %>    
     <% end %>
 </div>
