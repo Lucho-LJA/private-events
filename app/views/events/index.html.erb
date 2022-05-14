@@ -1,14 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <%= render 'feed', form_object: @event, form_objects: @events, form_path: 'events/form'%>
+    </div>
+  </div>
+</section>
 
-<h1>Events</h1>
-
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New event", new_event_path %>

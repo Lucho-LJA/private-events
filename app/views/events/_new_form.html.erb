@@ -1,0 +1,22 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title"><%= title %></h1>
+        <%= render 'form', form_object1: form_object, object_desciption: :description, object_date: :event_date %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar is-fixed-bottom">
+  <div class="navbar-menu">
+    <div class="navbar-item">
+      <div class="field is-grouped">
+        <p class="control">
+          <%= link_to 'Cancel', object_path, class:"button is-dark" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</nav>
