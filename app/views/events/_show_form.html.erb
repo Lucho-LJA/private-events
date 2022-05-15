@@ -17,7 +17,7 @@
                             <%= link_to edit_path_form, class: "level-item" do %>
                                 <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                             <% end %>
-                            <%= link_to form_view, data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to delete post?"
+                            <%= link_to form_view, data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to delete Event?"
                             } do %>
                                 <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                             <% end %>
@@ -26,7 +26,8 @@
                 </div>
                 <% if not current_user or current_user.id != id_user %>
                     <div class="level-right is-mobile">
-                        <%= link_to 'Join', form_view, class:"button is-info" %>
+                        <%= link_to 'Join', attendees_path( :send_object => form_view ), 
+                        data: {"turbo-method": :post, turbo_confirm: "Are you sure you want to Join Event?"}, class:"button is-info" %>
                     </div>
                 <% end %>   
             </nav>
