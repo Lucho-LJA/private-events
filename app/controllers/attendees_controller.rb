@@ -1,4 +1,8 @@
 class AttendeesController < ApplicationController
+    
+    def index
+        
+    end
     def create
         if current_user
             @attendee = current_user.attendees.build(attendee_event_id:params[:send_object])

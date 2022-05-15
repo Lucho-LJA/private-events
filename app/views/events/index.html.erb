@@ -1,7 +1,9 @@
 <section class="section">
   <div class="container">
     <div class="columns">
-      <%= render 'feed', form_object: @event, form_objects: @events, form_path: 'events/form'%>
+      <%= render 'feed', form_object: @event, form_objects: @events, 
+      form_path: 'events/form', form_objects_past: @events_past, 
+      form_objects_future: @events_future %>
     </div>
   </div>
 </section>

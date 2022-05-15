@@ -52,10 +52,17 @@
     align-items: center;
     justify-items: center;
 }
+.section, .user-section, .back_win, html{
+    background-color: #95c4eb;
+
+}
 .user-section{
     display: flex;
     flex-wrap: wrap;
     padding: 2.5rem;
     justify-content: center;
     gap: 1rem;
+}
+.title{
+    text-align: center;
 }

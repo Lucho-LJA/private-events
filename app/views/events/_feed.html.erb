@@ -13,13 +13,24 @@
             </div>
         </article>
     <% end %>
-
-
-    <% form_objects.each do |post_feed| %>
+    <div class="title">
+        <h1><strong>Events</strong></h2>
+    </div>
+    <% form_objects_future.each do |post_feed| %>
         <%= render 'show_form_main', name_user: post_feed.creator.name, 
         username_user: post_feed.creator.username, title_form: post_feed.title, 
         date_form: post_feed.event_date, description_form: post_feed.description, 
         form_view: post_feed, edit_path_form: edit_event_path(post_feed), 
-        id_user: post_feed.creator_id, form_view: post_feed %>    
+        id_user: post_feed.creator_id, form_view: post_feed, valid_join: true %>    
+    <% end %>
+    <div class="title">
+        <h1><strong>Past Events</strong></h2>
+    </div>
+    <% form_objects_past.each do |post_feed| %>
+        <%= render 'show_form_main', name_user: post_feed.creator.name, 
+        username_user: post_feed.creator.username, title_form: post_feed.title, 
+        date_form: post_feed.event_date, description_form: post_feed.description, 
+        form_view: post_feed, edit_path_form: edit_event_path(post_feed), 
+        id_user: post_feed.creator_id, form_view: post_feed, valid_join: false %>    
     <% end %>
 </div>

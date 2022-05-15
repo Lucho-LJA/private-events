@@ -34,7 +34,7 @@
                                 <% end %>
                             <% end %>
                         </div>
-                        <% if not current_user or current_user.id != id_user %>
+                        <% if (not current_user or current_user.id != id_user) and valid_join %>
                                 <div class="level-right is-mobile">
                                     <% if current_user and current_user.attendees.where(attendee_event_id:form_view.id).exists? %>
                                         <%= link_to 'See Event', form_view, class:"button is-dark" %>

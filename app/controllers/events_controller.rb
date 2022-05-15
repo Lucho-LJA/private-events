@@ -5,6 +5,8 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all.order("created_at DESC")
+    @events_past = @events.where(event_date: Time.at(0)...Time.now.in_time_zone)
+    @events_future = @events.where(event_date: Time.now.in_time_zone...DateTime::Infinity.new)
     @event = Event.new
   end
 
