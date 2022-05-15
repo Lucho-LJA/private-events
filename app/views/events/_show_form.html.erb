@@ -31,9 +31,11 @@
                             data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to exit the Event?"}, 
                             class:"button is-dark" %>
                         <% else %>
-                            <%= link_to 'Join', attendees_path( :send_object => form_view ), 
-                            data: {"turbo-method": :post, turbo_confirm: "Are you sure you want to Join Event?"}, 
-                            class:"button is-info" %>
+                            <% if form_view.event_date > Time.now.in_time_zone %>
+                                <%= link_to 'Join', attendees_path( :send_object => form_view ), 
+                                data: {"turbo-method": :post, turbo_confirm: "Are you sure you want to Join Event?"}, 
+                                class:"button is-info" %>
+                            <% end %>
                             
                         <% end %>
                     </div>
