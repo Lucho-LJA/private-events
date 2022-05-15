@@ -24,8 +24,8 @@
                         <% end %>
                     <% end %>
                 </div>
-                <% if not current_user or current_user.id != id_user %>
-                    <div class="level-right is-mobile">
+                <div class="level-right is-mobile">
+                    <% if not current_user or current_user.id != id_user %>
                         <% if current_user and current_user.attendees.where(attendee_event_id:form_view.id).exists? %>
                             <%= link_to 'Exit', attendee_path( :send_object => form_view.id ), 
                             data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to exit the Event?"}, 
@@ -38,8 +38,10 @@
                             <% end %>
                             
                         <% end %>
-                    </div>
-                <% end %>   
+                    <% elsif current_user and form_view.creator_id == current_user.id %>
+                        <%= link_to 'Delete', form_view, class:"button is-red" %>                                
+                    <% end %> 
+                </div> 
             </nav>
             <div class="content" style='text-align:center' >
                 <strong><%= title_form %></strong>
