@@ -10,6 +10,10 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    @users = []
+    Attendee.all.where(attendee_event_id: @event.id).find_each do |guest|
+      @users.append(guest.attendee_user)
+    end
   end
 
   # GET /events/new

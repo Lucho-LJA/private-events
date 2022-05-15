@@ -3,3 +3,7 @@
  edit_path_form: edit_event_path(@event), title_form: @event.title,
   description_form: @event.description, date_form: @event.event_date, 
   form_view: @event %>
+
+<% if current_user and Attendee.all.where(attendee_user_id: current_user.id, attendee_event_id:@event.id).exists? %>
+  <%= render 'show_form_user', form_users: @users %>
+<% end %>

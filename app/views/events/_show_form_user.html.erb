@@ -1,0 +1,11 @@
+<div class="user-section">
+    <% form_users.each do |guest| %>
+        <div class = "media-content content-center">
+            <figure class="image is-64x64">
+                <%= image_tag "default_person.jpg" %>
+            </figure>
+            <strong><%= guest.name %></strong><br />
+            <small>@<%= guest.username %></small>
+        </div>
+    <% end %>
+</div>
