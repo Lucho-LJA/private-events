@@ -26,8 +26,16 @@
                 </div>
                 <% if not current_user or current_user.id != id_user %>
                     <div class="level-right is-mobile">
-                        <%= link_to 'Join', attendees_path( :send_object => form_view ), 
-                        data: {"turbo-method": :post, turbo_confirm: "Are you sure you want to Join Event?"}, class:"button is-info" %>
+                        <% if current_user and current_user.attendees.where(attendee_event_id:form_view.id).exists? %>
+                            <%= link_to 'Exit', attendee_path( :send_object => form_view.id ), 
+                            data: {"turbo-method": :delete, turbo_confirm: "Are you sure you want to exit the Event?"}, 
+                            class:"button is-dark" %>
+                        <% else %>
+                            <%= link_to 'Join', attendees_path( :send_object => form_view ), 
+                            data: {"turbo-method": :post, turbo_confirm: "Are you sure you want to Join Event?"}, 
+                            class:"button is-info" %>
+                            
+                        <% end %>
                     </div>
                 <% end %>   
             </nav>
